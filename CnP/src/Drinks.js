@@ -3,8 +3,12 @@
 import React, { Component } from 'react'
 import {Icon, Button, Avatar} from 'react-native-elements'
 import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground, SectionList, AppRegistry,  ActivityIndicator, ListView, Alert, TabBarIOS, AlertIndicatorIOS, ActivityIndicatorIOS, AlertIOS,Br} from 'react-native';
+import {Container, Header, Content, Tab, Tabs, Title} from 'native-base';
+import Canned from './components/Tabs/canned.js'
+import Draft from './components/Tabs/draft.js'
 import Navigation from "./Navigation.js"
 import Home from '../App.js'
+import YourBill from './YourBill.js'
 import FoodDrinks from './FoodDrinks.js'
 import Pickleball from './Pickleball.js'
 import Events from './Events.js'
@@ -12,12 +16,11 @@ import AboutContact from './AboutContact.js'
 import SetLocation from './SetLocation.js'
 import LogOut from './LogOut.js'
 import WatchLocation from './WatchLocation.js'
-import Drinks from './Drinks.js'
 import Register from './Register.js'
 import LogIn from './LogIn.js'
 import Navbar from './Navbar.js'
 
-export default class YourBill extends Component {
+export default class Drinks extends Component {
   
   constructor(props) {
     super(props);
@@ -32,7 +35,7 @@ export default class YourBill extends Component {
  
   componentDidMount() {
  
-    return fetch('https://lit-reef-60415.herokuapp.com/orders')
+    return fetch('https://lit-reef-60415.herokuapp.com/products')
       .then((response) => response.json())
       .then((responseJson) => {
         let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2,
@@ -73,13 +76,26 @@ export default class YourBill extends Component {
     return (
       <View style={styles.MainContainer}>
         <Navbar navigator={this.props.navigator}/>
-        <ListView
+        <Container>
+            <Header hasTabs />
+            <Title>Drinks</Title>
+                <Tabs initalPage={1}>
+                    <Tab heading="Canned">
+                    <Canned />
+                </Tab>
+                <Tab heading="Draft">
+                    <Draft />
+                </Tab>
+                </Tabs>
+                </Container>
+
+        {/* <ListView
           style={styles.NavContainer}
           dataSource={this.state.dataSource}
           renderSeparator= {this.ListViewItemSeparator}
           renderRow={(rowData) => <Text style={styles.rowViewContainer} 
           onPress={this.GetItem.bind(this, rowData.product_description)} >{rowData.product_description}</Text>}        
-        />
+        /> */}
       </View>      
     );
   }
@@ -103,4 +119,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('FoodDrinks', () => Food);
+AppRegistry.registerComponent('Drinks', () => Drinks);

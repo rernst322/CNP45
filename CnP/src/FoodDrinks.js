@@ -2,7 +2,8 @@
 
 import React, { Component } from 'react'
 import {Icon, Button, Avatar} from 'react-native-elements'
-import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground, SectionList, AppRegistry,  ActivityIndicator, ListView, Alert, TabBarIOS, AlertIndicatorIOS, ActivityIndicatorIOS, AlertIOS} from 'react-native';
+import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground, SectionList, AppRegistry,  ActivityIndicator, ListView, Alert, TabBarIOS, AlertIndicatorIOS, ActivityIndicatorIOS, AlertIOS,Br} from 'react-native';
+import {Container, Header, Content, Tab, Tabs} from 'native-base';
 import Navigation from "./Navigation.js"
 import Home from '../App.js'
 import YourBill from './YourBill.js'
@@ -14,7 +15,13 @@ import SetLocation from './SetLocation.js'
 import LogOut from './LogOut.js'
 import WatchLocation from './WatchLocation.js'
 import Register from './Register.js'
+import Munchies from './components/Tabs/munchies.js'
+import Chicken from './components/Tabs/rchx.js'
+import Salad from './components/Tabs/salad.js'
+import Sandwich from './components/Tabs/sandwich.js'
+import Sides from './components/Tabs/sides.js'
 import LogIn from './LogIn.js'
+import Drinks from './Drinks.js'
 import Navbar from './Navbar.js'
 
 export default class Food extends Component {
@@ -25,12 +32,10 @@ export default class Food extends Component {
       isLoading: true
     }
   }
-GetItem (product_description) {
-   
-  Alert.alert(product_description);
- 
+  
+  GetItem (product_description) { 
+    Alert.alert(product_description);
   }
- 
  
   componentDidMount() {
  
@@ -62,8 +67,7 @@ GetItem (product_description) {
       />
     );
   }
- 
- 
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -74,66 +78,61 @@ GetItem (product_description) {
     }
  
     return (
-    
-      
-    
-      <View style={styles.MainContainer}>
-       <Navbar style={styles.Nav} navigator={this.props.navigator}/>
- 
-        <ListView
- 
-          dataSource={this.state.dataSource}
- 
-          renderSeparator= {this.ListViewItemSeparator}
- 
-          renderRow={(rowData) => <Text style={styles.rowViewContainer} 
-          onPress={this.GetItem.bind(this, rowData.product_description)} >{rowData.product_description}</Text>}
+        
 
-          
- 
-        />
-       
-       </View>
-    
-      
+<View style={styles.MainContainer}>
+        <Navbar navigator={this.props.navigator}/>
+        <Container>
+            <Header hasTabs />
+                <Tabs initalPage={1}>
+                    <Tab heading="Chicken">
+                    <Chicken />
+                </Tab>
+                <Tab heading="Sandwich">
+                    <Sandwich />
+                </Tab>
+                <Tab heading="Salad">
+                    <Salad />
+                </Tab>
+                <Tab heading="Munchies">
+                    <Munchies />
+                </Tab>
+                <Tab heading="Sides">
+                    <Sides />
+                </Tab>
+                </Tabs>
+            </Container>
+
+        {/* <ListView
+          style={styles.NavContainer}
+          dataSource={this.state.dataSource}
+          renderSeparator= {this.ListViewItemSeparator}
+          renderRow={(rowData) => <Text style={styles.rowViewContainer} 
+          onPress={this.GetItem.bind(this, rowData.product_description)} >{rowData.product_description}</Text>}        
+        /> */}
+      </View>      
     );
   }
 }
  
 const styles = StyleSheet.create({
  
-MainContainer :{
- 
-// Setting up View inside content in Vertically center.
-justifyContent: 'center',
-position: 'relative', 
-flex:1,
-// marginTop: 10,
-// marginLeft: 5,
- // marginRight: 5 
- 
-},
-Nav :{
- 
-  // Setting up View inside content in Vertically center.
-  // justifyContent: 'center',
-  // position: 'relative', 
-  // flex:1,
-  // marginTop: 100
-  // marginLeft: 5,
-   // marginRight: 5 
-   padding: 20
-   
+  MainContainer :{
+    justifyContent: 'center',
+    position: 'relative', 
+    flex:1,
   },
-   rowViewContainer: {
-        fontSize: 20,
-        paddingRight: 10,
-        paddingTop: 30,
-        paddingBottom: 10
-      }
- 
+  NavContainer :{
+    marginTop: 40
+  },
+  rowViewContainer: {
+    fontSize: 20,
+    paddingRight: 10,
+    paddingTop: 30,
+    paddingBottom: 10,
+    marginLeft: 5,
+    marginRight: 5
+  }
 });
-
-// export default class Food extends Component {
 
 AppRegistry.registerComponent('FoodDrinks', () => Food);

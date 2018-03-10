@@ -5,6 +5,7 @@ import Navigation from "./Navigation.js"
 import Home from '../App.js'
 import YourBill from './YourBill.js'
 import FoodDrinks from './FoodDrinks.js'
+import Drinks from './Drinks.js'
 import Pickleball from './Pickleball.js'
 import Events from './Events.js'
 import AboutContact from './AboutContact.js'
@@ -84,8 +85,8 @@ export default class Navbar extends Component<{}> {
               onPress={
                 () => 
                 this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
+                  title: 'Drinks',
+                  component: Drinks,
                 })
               }
             />
@@ -116,8 +117,8 @@ export default class Navbar extends Component<{}> {
               onPress={
                 () => 
                 this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
+                  title: 'Events',
+                  component: Events,
                 })
               }
             />

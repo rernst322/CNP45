@@ -16,6 +16,7 @@ import WatchLocation from './WatchLocation.js'
 import Register from './Register.js'
 import LogIn from './LogIn.js'
 import MapPage from './MapPage.js'
+import Drinks from './Drinks.js'
 
 var test='test';
 export default class Order extends Component<{}> {

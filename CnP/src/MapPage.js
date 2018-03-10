@@ -9,6 +9,7 @@ import Navigation from "./Navigation.js"
 import Home from '../App.js'
 import YourBill from './YourBill.js'
 import FoodDrinks from './FoodDrinks.js'
+import Drinks from './Drinks.js'
 import Pickleball from './Pickleball.js'
 import Events from './Events.js'
 import AboutContact from './AboutContact.js'

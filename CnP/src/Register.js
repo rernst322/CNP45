@@ -10,6 +10,7 @@ import Pickleball from './Pickleball.js'
 import Events from './Events.js'
 import AboutContact from './AboutContact.js'
 import SetLocation from './SetLocation.js'
+import Drinks from './Drinks.js'
 import LogOut from './LogOut.js'
 
 export default class Register extends React.Component {

@@ -3,21 +3,23 @@
 import React, { Component } from 'react'
 import {Icon, Button, Avatar} from 'react-native-elements'
 import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground, SectionList, AppRegistry,  ActivityIndicator, ListView, Alert, TabBarIOS, AlertIndicatorIOS, ActivityIndicatorIOS, AlertIOS,Br} from 'react-native';
-import Navigation from "./Navigation.js"
-import Home from '../App.js'
-import FoodDrinks from './FoodDrinks.js'
-import Pickleball from './Pickleball.js'
-import Events from './Events.js'
-import AboutContact from './AboutContact.js'
-import SetLocation from './SetLocation.js'
-import LogOut from './LogOut.js'
-import WatchLocation from './WatchLocation.js'
-import Drinks from './Drinks.js'
-import Register from './Register.js'
-import LogIn from './LogIn.js'
-import Navbar from './Navbar.js'
+import {Container, Header, Content, Tab, Tabs} from 'native-base';
+// import RChx from '/components/Tabs/rchx.js'
+// import Navigation from "./Navigation.js"
+// import Home from '../App.js'
+// import YourBill from './YourBill.js'
+// import FoodDrinks from './FoodDrinks.js'
+// import Pickleball from './Pickleball.js'
+// import Events from './Events.js'
+// import AboutContact from './AboutContact.js'
+// import SetLocation from './SetLocation.js'
+// import LogOut from './LogOut.js'
+// import WatchLocation from './WatchLocation.js'
+// import Register from './Register.js'
+// import LogIn from './LogIn.js'
+// import Navbar from './Navbar.js'
 
-export default class YourBill extends Component {
+export default class Sides extends Component {
   
   constructor(props) {
     super(props);
@@ -26,13 +28,13 @@ export default class YourBill extends Component {
     }
   }
   
-  GetItem (product_description) { 
-    Alert.alert(product_description);
+  GetItem (product_description, categort, cost, subcategory, product_id) { 
+    Alert.alert(product_description, cost);
   }
  
   componentDidMount() {
  
-    return fetch('https://lit-reef-60415.herokuapp.com/orders')
+    return fetch('https://lit-reef-60415.herokuapp.com/products')
       .then((response) => response.json())
       .then((responseJson) => {
         let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2,
@@ -72,7 +74,6 @@ export default class YourBill extends Component {
  
     return (
       <View style={styles.MainContainer}>
-        <Navbar navigator={this.props.navigator}/>
         <ListView
           style={styles.NavContainer}
           dataSource={this.state.dataSource}
@@ -103,4 +104,4 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('FoodDrinks', () => Food);
+AppRegistry.registerComponent('sides', () => Sides);

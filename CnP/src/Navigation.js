@@ -6,6 +6,7 @@ import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList
 import Home from '../App.js'
 import YourBill from './YourBill.js'
 import FoodDrinks from './FoodDrinks.js'
+import Drinks from './Drinks.js'
 import Events from './Events.js'
 import AboutContact from './AboutContact.js'
 import SetLocation from './SetLocation.js'
@@ -92,6 +93,27 @@ export default class Navigation extends Component<{}> {
               underlayColor='white'
               size={20}
             />
+            <Button
+              textStyle={{textAlign:'center'}}
+              title={'Order'}
+              buttonStyle={{
+                position: 'fixed',
+                marginTop:'5%',
+                backgroundColor: "#191919",
+                width: 100,
+                height: 45,
+                borderColor: "transparent",
+                borderWidth: 0,
+                borderRadius: 5
+              }}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Food and Drinks',
+                  component: FoodDrinks,
+                })
+              }
+            />
             <Icon
                 name='local-bar'
                 color='black'
@@ -114,8 +136,8 @@ export default class Navigation extends Component<{}> {
               onPress={
                 () => 
                 this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
+                  title: 'Drinks',
+                  component: Drinks,
                 })
               }
             />
